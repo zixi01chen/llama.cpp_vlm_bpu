@@ -32,6 +32,7 @@ cmake --build build --config Release
 ```
 
 - 模型下载
+  下载地址 https://huggingface.co/QIANCHEN100/InternVL2_5-1B-GGUF-BPU
 
 ## 运行
 
