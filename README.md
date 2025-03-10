@@ -70,3 +70,7 @@ cmake --build build --config Release
 运行结果:
 
 ![image](img/result.png)
+
+## 附录
+
+[如何导出语言模型？](./utils/README.md)
