@@ -418,7 +418,8 @@ static struct llama_model * llava_init(common_params * params) {
 
     llama_model_params model_params = common_model_params_to_llama(*params);
 
-    llama_model * model = llama_model_load_from_file(params->model.c_str(), model_params);
+    // llama_model * model = llama_model_load_from_file(params->model.c_str(), model_params);
+    llama_model * model = llama_model_load_from_file(params->model.path.c_str(), model_params);
     if (model == NULL) {
         LOG_ERR("%s: unable to load model\n" , __func__);
         return NULL;
@@ -427,7 +428,8 @@ static struct llama_model * llava_init(common_params * params) {
 }
 
 static struct llava_context * llava_init_context(common_params * params, llama_model * model, hbDNNPackedHandle_t& packed_dnn_handle) {
-    const char * model_file_name = params->mmproj.c_str();
+    // const char * model_file_name = params->mmproj.c_str();
+    const char * model_file_name = params->mmproj.path.c_str();
 
     auto prompt = params->prompt;
     if (prompt.empty()) {
@@ -470,7 +472,12 @@ int main(int argc, char ** argv) {
 
     common_init();
 
-    if (params.mmproj.empty() || (params.image.empty() && !prompt_contains_image(params.prompt))) {
+    // if (params.mmproj.empty() || (params.image.empty() && !prompt_contains_image(params.prompt))) {
+    //     print_usage(argc, argv);
+    //     return 1;
+    // }
+
+    if (params.mmproj.path.empty() || (params.image.empty() && !prompt_contains_image(params.prompt))) {
         print_usage(argc, argv);
         return 1;
     }
