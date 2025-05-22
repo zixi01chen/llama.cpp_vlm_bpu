@@ -1,5 +1,5 @@
-# llama.cpp_internvl2_bpu
-
+# llama.cpp_internvl2_bpu b5363
+b5363版本， 修改自llama.cpp -b5363 版本 增加了对 **Qwen3** 系列的支持。同时也支持使用BPU加速 **InternVL2.5** / **InternVL3**
 
 ## 简介
   本项目是一个RDK X5/S100 平台运行 [书生多模态大模型](https://huggingface.co/OpenGVLab/InternVL2_5-1B) 的示例, 具体模型参数 InternVL2_5-1B。
@@ -22,17 +22,17 @@
 
 ```shell
 # 拉取代码
-git clone https://github.com/ggerganov/llama.cpp -b b4749
+git clone https://github.com/ggerganov/llama.cpp -b b5363
 
 # 替换示例文件
 cd llama.cpp
-cp ../src/x5/* ./examples/llava
+cp ../src/x5/* ./tools/mtmd
 ```
 
 - 在 [RDK X5](https://developer.d-robotics.cc/rdkx5) 平台上编译
 ```shell
 cmake -B build
-cmake --build build --config Release
+cmake --build build --config Release -j 8
 ```
 
 ### RDK S100
@@ -42,17 +42,17 @@ cmake --build build --config Release
 
 ```shell
 # 拉取代码
-git clone https://github.com/ggerganov/llama.cpp -b b4749
+git clone https://github.com/ggerganov/llama.cpp -b b5363
 
 # 替换示例文件
 cd llama.cpp
-cp ../src/s100/* ./examples/llava
+cp ../src/s100/* ./tools/mtmd
 ```
 
 - 在 RDK S100 平台上编译
 ```shell
 cmake -B build
-cmake --build build --config Release
+cmake --build build --config Release -j 6
 ```
 
 ## 运行
@@ -64,7 +64,7 @@ cmake --build build --config Release
 
 ### RDK S100
 ```
-./build/bin/llama-intern2vl-bpu-cli -m ./Qwen2.5-0.5B-Instruct-F16.gguf --mmproj ./vit_model_int16.hbm --image image2.jpg -p "描述一下这张图片." --temp 0.5 --threads 4
+./build/bin/llama-intern2vl-bpu-cli -m ./Qwen2.5-0.5B-Instruct-F16.gguf --mmproj ./vit_model_int16.hbm --image image2.jpg -p "描述一下这张图片." --temp 0.5 --threads 6
 ```
 
 运行结果:
