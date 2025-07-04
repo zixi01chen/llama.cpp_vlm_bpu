@@ -63,7 +63,7 @@ cmake --build build --config Release -j6
 ```
 ./build/bin/llama-intern2vl-bpu-cli -m ./Qwen2.5-0.5B-Instruct-F16.gguf --mmproj ./vit_model_int16.bin --image image2.jpg -p "描述一下这张图片." --temp 0.5 --threads 8
 ```
-### SmolVLM in RDK X5, 请注意SmolVLM系列模型只支持**英文**__
+### SmolVLM in RDK X5, 请注意SmolVLM系列模型只支持**英文**
 ```
 ./build/bin/llama-smolvlm-bpu-cli -m ./SmolVLM2-500M-Video-Instruct-Q8_0.gguf --mmproj ./vit_model_int16_SmolVLM2_500M_Instruct_X5.bin --image image2.jpg -p "Describe the image in one sentence." --temp 0.5 --threads 8
 ```
